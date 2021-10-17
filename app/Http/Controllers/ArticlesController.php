@@ -86,4 +86,18 @@ class ArticlesController extends Controller
         return view("delete",compact("article","id"));
     }
 
+    public function enable(Request $request,$id){
+        $article=Article::find($id);
+        $article->status = 'enabled';
+        $article->save();
+        return redirect('/articles');
+    }
+
+    public function disable(Request $request,$id){
+        $article=Article::find($id);
+        $article->status = 'disabled';
+        $article->save();
+        return redirect('/articles');
+    }
+
 }
